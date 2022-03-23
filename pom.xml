@@ -2,14 +2,14 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>de.acosix.alfresco.maven</groupId>
-        <artifactId>de.acosix.alfresco.maven.project.parent-6.1.2</artifactId>
-        <version>1.3.3</version>
+        <artifactId>de.acosix.alfresco.maven.project.parent-7.0.0</artifactId>
+        <version>1.4.1</version>
     </parent>
 
     <groupId>org.aldica</groupId>
@@ -85,7 +85,7 @@
         <aldica.ignite-common.basePackage>org.aldica.common.ignite</aldica.ignite-common.basePackage>
         <aldica.ignite-repo.artifactId>aldica-repo-ignite</aldica.ignite-repo.artifactId>
 
-        <acosix.utility.version>1.2.2</acosix.utility.version>
+        <acosix.utility.version>1.3.0</acosix.utility.version>
         <ootbee.support-tools.version>1.1.0.0</ootbee.support-tools.version>
         <apache.ignite.version>2.8.1</apache.ignite.version>
         <easymock.version>4.2</easymock.version>
@@ -112,7 +112,7 @@
             -DIGNITE_UPDATE_NOTIFIER=false
             -DIGNITE_JVM_PAUSE_DETECTOR_DISABLED=true
             -DIGNITE_SKIP_CONFIGURATION_CONSISTENCY_CHECK=true
-        ]]></docker.tests.igniteCommonJavaOpts>
+        ]]>        </docker.tests.igniteCommonJavaOpts>
         <docker.tests.repositoryCommonJavaOpts><![CDATA[
             ${docker.tests.igniteCommonJavaOpts}
             ${docker.tests.repositoryVersionSpecificJavaOpts}
@@ -130,12 +130,12 @@
             -D${moduleId}.core.storage.defaultStorageRegion.initialSize=268935456
             -D${moduleId}.core.storage.defaultStorageRegion.maxSize=536870912
             -Xms2g -Xmx2g
-        ]]></docker.tests.repositoryCommonJavaOpts>
+        ]]>        </docker.tests.repositoryCommonJavaOpts>
         <docker.tests.shareCommonJavaOpts><![CDATA[
             ${docker.tests.igniteCommonJavaOpts}
             -Xms512m -Xmx512m
-        ]]></docker.tests.shareCommonJavaOpts>
-        
+        ]]>        </docker.tests.shareCommonJavaOpts>
+
         <!-- override the inherited default ports to align with ports we previously used -->
         <docker.tests.repositoryPort>8180</docker.tests.repositoryPort>
         <docker.tests.repositoryDebugPort>8185</docker.tests.repositoryDebugPort>
@@ -292,6 +292,14 @@
                     <version>${maven.shade.version}</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
@@ -302,7 +310,7 @@
         <module>repository-companion</module>
         <module>share</module>
     </modules>
-    
+
     <profiles>
         <profile>
             <id>surefireSuppression</id>

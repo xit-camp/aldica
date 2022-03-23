@@ -1,17 +1,27 @@
-# Introduction
+# Docker Installation
+
+## Introduction
 
 A `docker-compose.yml` file is provided in the `docker` sub-folder of the project root.
-This `docker-compose.yml` file is based upon the upstream 
-[Alfresco Content Services Community Deployment](https://github.com/Alfresco/acs-community-deployment) 
-`docker-compose.yml` file, but with a few additions. In order to see the distributed nature of 
+This `docker-compose.yml` file is based upon the upstream
+[Alfresco Content Services Community Deployment](https://github.com/Alfresco/acs-community-deployment)
+`docker-compose.yml` file, but with a few additions. In order to see the distributed nature of
 the caching mechanism in action, a small cluster is started by the `docker-compose.yml`. This means
-that two aldica-enabled Alfresco repositories and two aldica-enabled Alfresco Share containers are fired up 
-along with a simple Nginx load balancer. 
+that two aldica-enabled Alfresco repositories and two aldica-enabled Alfresco Share containers are fired up
+along with a simple Nginx load balancer.
 
-# Prerequisites
+## Prerequisites
+
 * Docker daemon and client
 
-# Installation
+## Installation
+
+### aldica repository only
+
+`docker build -f docker/Dockerfile.repo.build . -t docker.xit.camp/alfresco-content-repository-aldica:7.1.1.2`
+
+### whole alfresco stack
+
 Running `docker-compose up -d --build` within the `docker` sub-folder, will:
 
 1. Build and start the two aldica-enabled Alfresco repositories.
@@ -22,7 +32,8 @@ Running `docker-compose up -d --build` within the `docker` sub-folder, will:
 Note that this will take quite a while (~1 hour), depending on available CPU and network resources.
 
 For convenience, you could set up DNS entries in the `/etc/hosts` file on your host machine:
-```
+
+```config
 127.0.0.1   localhost alfresco1 alfresco2 share1 share2 loadbalancer
 ```
 
