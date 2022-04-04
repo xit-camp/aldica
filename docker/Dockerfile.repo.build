@@ -37,7 +37,7 @@ RUN mvn package -B -DskipTests -Dmaven.main.skip -pl common,repository
 RUN mvn install -B -DskipTests -Dquality.findBugs.skip -pl common,repository
 
 # Build aldica-enabled Alfresco Repository
-FROM alfresco/alfresco-content-repository-community:7.1.1.2
+FROM alfresco/alfresco-content-repository-community:7.2.0
 
 ARG ACOSIX_UTILS_VERSION
 ARG OOB_SUPPORT_TOOLS_VERSION

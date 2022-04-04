@@ -18,7 +18,7 @@ along with a simple Nginx load balancer.
 
 ### aldica repository only
 
-`docker build -f docker/Dockerfile.repo.build . -t docker.xit.camp/alfresco-content-repository-aldica:7.1.1.2`
+`docker build -f docker/Dockerfile.repo.build . -t docker.xit.camp/alfresco-content-repository-aldica:7.2.0`
 
 ### whole alfresco stack
 
